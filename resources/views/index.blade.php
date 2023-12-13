@@ -85,9 +85,24 @@
 
         /* Adjustments for Small (SM) screens (tablets) */
         @media (min-width: 577px) and (max-width: 767px) {
-            #carouselExampleFade {
+            .caroumage {
+                object-fit: cover;
+                object-position: center;
                 height: 300px;
             }
+        }
+
+        .carousel-item {
+            position: relative; 
+            color: #fff;
+            /* Text color */
+        }
+
+        .carousel-text {
+            position: absolute;
+            top: 20%;
+            left: 0; 
+            padding: 20px;
         }
 
         .offcanvas {
@@ -178,25 +193,8 @@
     </nav>
 
 
-    {{-- Alert --}}
-
-
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
-            <p>{{ $message }}</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if ($message = Session::get('fail'))
-        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
-            <p>{{ $message }}</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
-
-
-    <div class="main-c " data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="10" data-bs-root-margin="0px 50px -40%" data-bs-smooth-scroll="true">
+    <div class="main-c " data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="10"
+        data-bs-root-margin="0px 50px -40%" data-bs-smooth-scroll="true">
 
         <!-- Masthead-->
         {{-- <header class="masthead" id="pagetop">
@@ -215,13 +213,13 @@
                 <div class="carousel-item active">
                     <img src="{{ asset('images/fourgon_securitas.png') }}" class="d-block  w-100 caroumage"
                         alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/algamil.jpg') }}" class="d-block  w-100 caroumage" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/geant_hypermarche.jpg') }}" class="d-block  w-100 caroumage"
-                        alt="...">
+                    <div class="carousel-text">
+                        <h2 class="fw-light ">Parce que votre tranquillité</h2>
+                        <h2 class="fw-light ">
+                            Et votre sécurité ne sont pas à prendre à la légère,
+                        </h2>
+                        <h2 class="fw-light ">Nous veillons sur vous et vos biens</h2>
+                    </div>
                 </div>
             </div>
             {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -235,6 +233,24 @@
                 <span class="visually-hidden">Next</span>
             </button> --}}
         </div>
+
+
+        {{-- Alert --}}
+
+
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+                <p>{{ $message }}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if ($message = Session::get('fail'))
+            <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                <p>{{ $message }}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
 
         <!-- Apropos -->
         <section class="page-section bg-light pb-5" id="apropos">
