@@ -71,8 +71,23 @@
 
         .caroumage {
             object-fit: cover;
-            object-position: center; 
+            object-position: center;
             height: 400px;
+        }
+
+        @media (max-width: 576px) {
+            .caroumage {
+                object-fit: cover;
+                object-position: center;
+                height: 200px;
+            }
+        }
+
+        /* Adjustments for Small (SM) screens (tablets) */
+        @media (min-width: 577px) and (max-width: 767px) {
+            #carouselExampleFade {
+                height: 300px;
+            }
         }
 
         .offcanvas {
@@ -105,13 +120,13 @@
     </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
+<body>
 
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink " id="mainNav">
         <div class="container">
             <div class="d-flex justify-content-start">
-                <a class="navbar-brand ms-1" href="#pagetop">
+                <a class="navbar-brand ms-1" id="pagetop">
                     <img src="{{ asset('images/logo_securitas_bgless.png') }}" alt="..." />
                 </a>
 
@@ -181,7 +196,7 @@
 
 
 
-    <div class="main-c ">
+    <div class="main-c " data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="10" data-bs-root-margin="0px 50px -40%" data-bs-smooth-scroll="true">
 
         <!-- Masthead-->
         {{-- <header class="masthead" id="pagetop">
@@ -195,22 +210,21 @@
             </div>
         </header> --}}
 
-        <div id="carouselExampleFade" class="carousel slide carousel-fade"  data-bs-ride="carousel">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade " data-bs-ride="carousel">
             <div class="carousel-inner" {{-- style="height: 400px;" --}}>
                 <div class="carousel-item active">
                     <img src="{{ asset('images/fourgon_securitas.png') }}" class="d-block  w-100 caroumage"
                         alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('images/algamil.jpg') }}" class="d-block  w-100 caroumage"
-                        alt="...">
+                    <img src="{{ asset('images/algamil.jpg') }}" class="d-block  w-100 caroumage" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="{{ asset('images/geant_hypermarche.jpg') }}" class="d-block  w-100 caroumage"
                         alt="...">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -219,12 +233,12 @@
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> --}}
         </div>
 
         <!-- Apropos -->
-        <section class="page-section py-5" id="apropos">
-            <div class="container mb-5">
+        <section class="page-section bg-light pb-5" id="apropos">
+            <div class="container ">
                 <div class="text-left">
                     <h3 class="section-heading text-uppercas">Qui sommes nous?</h3>
                     <p class="text-muted w-7">
@@ -1075,6 +1089,34 @@
         }
 
         window.initMap = initMap;
+    </script>
+
+    <script>
+        //Get the button
+        let mybutton = document.getElementById("pagetop");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20
+            ) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "block";
+            }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener("click", backToTop);
+
+        function backToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     </script>
 
     <script async defer
