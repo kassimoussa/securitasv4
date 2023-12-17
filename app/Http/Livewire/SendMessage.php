@@ -41,17 +41,16 @@ class SendMessage extends Component
         $email = $this->email;
         $mess = $this->detail;
 
-
         if ($query) {
-            $send_mail = "kassimdt2@gmail.com";
-            Mail::to($send_mail)->queue(new MessageMail($name, $email, $mess));
-            Mail::to($email)->queue(new SendMessageToEndUser($name));
-            $this->reset();
             $this->dispatchBrowserEvent( 'close-offcanvas'); 
             $this->dispatchBrowserEvent(
                 'alert',
                 ['type' => 'success',  'message' => 'Votre message a été enregistrer avec succès!']
             ); 
+            $this->reset();
+            $send_mail = "kassimdt2@gmail.com";
+            Mail::to($send_mail)->queue(new MessageMail($name, $email, $mess));
+            Mail::to($email)->queue(new SendMessageToEndUser($name));
         } else { 
             $this->dispatchBrowserEvent(
                 'alert',

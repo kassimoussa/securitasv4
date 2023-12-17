@@ -15,16 +15,16 @@ class SendDevis extends Component
     public function messages()
     {
         return [
-            'telephone.required' => 'Vous devez entrer un numéro de telephone.', 
+            'telephone.required' => 'Vous devez entrer un numéro de telephone.',
             'telephone.max' => 'Vous devez entrer un numéro de 8 chiffres ',
             'telephone.min' => 'Vous devez entrer un numéro de 8 chiffres ',
             'nom.required' => 'Vous devez entrer votre nom.',
             'email.required' => "Vous devez entrer votre email.",
             'email.email' => "Vous devez entrer un email valide.",
             'societe.required' => "Vous devez remplir ce champ.",
-            'adresse.required' => "Vous devez entrer votre adresse.", 
-            'type_service.required' => "Vous devez selectionner un service.", 
-            'detail.required' => "Vous devez remplir ce champ.", 
+            'adresse.required' => "Vous devez entrer votre adresse.",
+            'type_service.required' => "Vous devez selectionner un service.",
+            'detail.required' => "Vous devez remplir ce champ.",
         ];
     }
     public function send()
@@ -35,8 +35,8 @@ class SendDevis extends Component
             'telephone' => 'required',
             'societe' => 'required',
             'adresse' => 'required',
-            'type_service' => 'required', 
-            'detail' => 'required', 
+            'type_service' => 'required',
+            'detail' => 'required',
         ]);
 
         $devis = new Devis();
@@ -56,20 +56,20 @@ class SendDevis extends Component
 
         if ($query) {
 
+            $this->dispatchBrowserEvent('close-offcanvas');
+            $this->dispatchBrowserEvent(
+                'alert',
+                ['type' => 'success',  'message' => 'Votre demande de devis a été enregistrer avec succès!']
+            );
             $send_mail = "kassimdt2@gmail.com";
             Mail::to($send_mail)->queue(new DevisMail($name, $email, $mess));
             Mail::to($email)->queue(new ReplyDevis($name));
             $this->reset();
-            $this->dispatchBrowserEvent( 'close-offcanvas'); 
-            $this->dispatchBrowserEvent(
-                'alert',
-                ['type' => 'success',  'message' => 'Votre demande de devis a été enregistrer avec succès!']
-            ); 
-        } else { 
+        } else {
             $this->dispatchBrowserEvent(
                 'alert',
                 ['type' => 'fail',  'message' => "Echec d'enregistrement de la demande"]
-            );  
+            );
         }
     }
 
