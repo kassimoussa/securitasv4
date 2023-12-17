@@ -38,6 +38,8 @@
 
     @vite(['resources/js/app.js'])
 
+    @livewireStyles
+
     <!-- Styles -->
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
@@ -93,7 +95,7 @@
         }
 
         .carousel-item {
-            position: relative; 
+            position: relative;
             color: #fff;
             /* Text color */
         }
@@ -101,7 +103,7 @@
         .carousel-text {
             position: absolute;
             top: 20%;
-            left: 0; 
+            left: 0;
             padding: 20px;
         }
 
@@ -194,7 +196,7 @@
 
 
     <div class="main-c " data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="10"
-        data-bs-root-margin="0px 50px -40%" data-bs-smooth-scroll="true">
+        data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
 
         <!-- Masthead-->
         {{-- <header class="masthead" id="pagetop">
@@ -625,7 +627,10 @@
     </footer>
 
     <!-- Contactez-nous offcanvas -->
-    <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="contecteznous" aria-labelledby="contecteznous">
+
+    <livewire:send-message />
+
+    {{-- <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="contecteznous" aria-labelledby="contecteznous">
         <div class="offcanvas-header border-bottom border-dark">
             <h5 class="offcanvas-title text-center" id="contecteznous">
                 Contactez-nous
@@ -638,17 +643,7 @@
                     Remplissez le formulaire ci-dessous et nous prendrons contact avec
                     vous.
                 </p>
-            </div>
-
-            {{-- <div class="d-flex justify-content-between my-3">
-                <div class="bg-primary opacity-50 fs-6 p-2 rounded">
-                    <a href="tel:+25321342087" class="text-dark"><i class="fas fa-phone"> </i> 21342087</a>
-                </div>
-                <div class="bg-primary opacity-50 fs-6 p-2 rounded">
-                    <a href="mailto:djiboutisecuritas@gmail.com" class="text-dark"><i class="fas fa-at"> </i>
-                        djiboutisecuritas@gmail.com</a>
-                </div>
-            </div> --}}
+            </div> 
             <div class="d-flex flex-column flex-sm-row justify-content-between my-3">
                 <div class="bg-primary opacity-50 fs-6 p-2 rounded mb-2 mb-sm-0">
                     <a href="tel:+25321342087" class="text-dark"><i class="fas fa-phone"></i> 21342087</a>
@@ -712,10 +707,13 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Devis offcanvas -->
-    <div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="devis" aria-labelledby="devis">
+
+    <livewire:send-devis />
+
+    {{--  <div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="devis" aria-labelledby="devis">
         <div class="offcanvas-header border-bottom border-dark">
             <h5 class="offcanvas-title text-center" id="devis">Demande de devis</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -811,7 +809,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Domaines  modals popup-->
 
@@ -1062,6 +1060,21 @@
                 }
             ]
         });
+
+
+        window.addEventListener('alert', event => {
+            toastr[event.detail.type](event.detail.message,
+                event.detail.title ?? ''), toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+            }
+        });
+
+        window.addEventListener('close-offcanvas', event => {
+            $('.offcanvas').offcanvas('hide');
+        });
+
     </script>
 
     <script>
@@ -1134,6 +1147,10 @@
             document.documentElement.scrollTop = 0;
         }
     </script>
+
+
+    @livewireScripts
+
 
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPoqxVv9bVRxucHZ0EK77INZUgyx3Q0QE&callback=initMap"

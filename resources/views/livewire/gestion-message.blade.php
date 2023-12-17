@@ -24,7 +24,7 @@
                             <td>{{ $message->nom }}</td>
                             <td>{{ $message->email }}</td>
                             <td>{{ $message->telephone }}</td>
-                            <td>{{ $message->created_at->format('d/m/Y') }}</td>
+                            <td>{{ $message->created_at->format('d/m/Y à h:i') }}</td>
                             <td class="td-actions ">
                                 <div class="dropdown dropstart">
                                     <button type="button" class="btn btn-icon dropdown-toggle" data-bs-toggle="dropdown"
@@ -51,8 +51,6 @@
                                 </div>
                             </td>
                         </tr>
-
-
 
                         @php
                             $cnt = $cnt + 1; 

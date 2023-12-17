@@ -24,7 +24,7 @@
                             <td>{{ $devis->nom }}</td>
                             <td>{{ $devis->societe }}</td>
                             <td>{{ $devis->type_service }}</td>
-                            <td>{{ $devis->created_at->format('d/m/Y') }}</td>
+                            <td>{{ $devis->created_at->format('d/m/Y à h:i') }}</td>
                             <td class="td-actions ">
                                 <div class="dropdown dropstart">
                                     <button type="button" class="btn btn-icon dropdown-toggle" data-bs-toggle="dropdown"
@@ -77,11 +77,11 @@
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-dark text-white d-flex ">
-                        <div class="col-6 text-start">
-                            <h3 class="fw-bold">Demande de devis du {{ $nom }}</h3>
+                        <div class="col-8 text-start">
+                            <h3 class="fw-bold">Demande de devis de {{ $nom }}</h3>
                         </div>
 
-                        <div class="col-6 text-end pe-3">
+                        <div class="col-4 text-end pe-3">
                             <div class="row">
                                 <div class="">
                                     <button type="reset" wire.click="close_modal"

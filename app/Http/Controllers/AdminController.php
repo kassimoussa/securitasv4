@@ -63,7 +63,7 @@ class AdminController extends Controller
 
     public function devis_store(Request $request)
     {
-        $devis = new Devis();
+        $devis = new Devis(); 
         $devis->nom = $request->nom; 
         $devis->email = $request->email;
         $devis->telephone = $request->telephone;
