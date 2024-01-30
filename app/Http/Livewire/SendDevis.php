@@ -61,7 +61,7 @@ class SendDevis extends Component
                 'alert',
                 ['type' => 'success',  'message' => 'Votre demande de devis a été enregistrer avec succès!']
             );
-            $send_mail = "kassimdt2@gmail.com";
+            $send_mail = "djiboutisecuritas@gmail.com";
             Mail::to($send_mail)->queue(new DevisMail($name, $email, $mess));
             Mail::to($email)->queue(new ReplyDevis($name));
             $this->reset();

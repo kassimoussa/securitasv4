@@ -48,7 +48,7 @@ class SendMessage extends Component
                 ['type' => 'success',  'message' => 'Votre message a été enregistrer avec succès!']
             ); 
             $this->reset();
-            $send_mail = "kassimdt2@gmail.com";
+            $send_mail = "djiboutisecuritas@gmail.com";
             Mail::to($send_mail)->queue(new MessageMail($name, $email, $mess));
             Mail::to($email)->queue(new SendMessageToEndUser($name));
         } else { 

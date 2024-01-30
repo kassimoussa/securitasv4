@@ -581,8 +581,8 @@
                                         <div>
                                             <h5 class="mb-1">E-mail</h5>
                                             <p class="mb-0">
-                                                <a href="mailto:contact@securit-as.com"
-                                                    class="link-body">contact@securit-as.com</a>
+                                                <a href="mailto:djiboutisecuritas@gmail.com"
+                                                    class="link-body">djiboutisecuritas@gmail.com</a>
                                             </p>
                                         </div>
                                     </div>

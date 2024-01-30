@@ -27,8 +27,8 @@
                 <a href="tel:+25321342087" class="text-dark"><i class="fas fa-phone"></i> 21342087</a>
             </div>
             <div class="bg-primary opacity-50 fs-6 p-2 rounded">
-                <a href="mailto:contact@securit-as.com" class="text-dark"><i class="fas fa-at"></i>
-                    contact@securit-as.com</a>
+                <a href="mailto:djiboutisecuritas@gmail.com" class="text-dark"><i class="fas fa-at"></i>
+                    djiboutisecuritas@gmail.com</a>
             </div>
         </div>
 
