@@ -16,8 +16,13 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 */
 
 
+Route::get('{any}', function() {
+    return view('404page');
+ })->where('any', '.*');
+
 Route::get('/', function () {
     return view('index');
+    //return view('404page');
 });
 
 Route::get('/test', function () {
